@@ -1,0 +1,223 @@
+@font-face {
+  font-family: 'Faruma';
+  src: url('faruma.ttf') format('truetype');
+}
+
+body {
+  background-color: LightBlue;
+  font-family: 'Faruma', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQdcT4pdXf8C-IAFjXCJVI0vJZfLpW1HMfOQ&usqp=CAU");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.table__row td:nth-child(1) {
+  text-decoration: none;
+  color: black;
+}
+
+#clock {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  font-family: 'Digital-7 Regular', monospace;
+}
+
+#date-box {
+position: absolute;
+top: 80px;
+right: 20px;
+background-color: black;
+color: white;
+font-size: 35px;
+text-align: center;
+padding: 15px;
+border-radius: 10px;
+font-family: 'Digital-7 Regular', monospace;
+margin-top: 20px;
+}
+
+table {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.col-2,
+.col-3 {
+  font-family: 'Digital-7 Regular', monospace;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  color: black;
+  margin-top: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+table:first-child {
+  float: left;
+}
+table {
+  margin-top: 50px;
+  border-collapse: collapse;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #f5fefd;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: slideInFromLeft 1s ease-out;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 10px;
+  color: #444;
+  font-size: 40px;
+}
+
+th {
+  background-color: none;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+th {
+  background-color: none;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+caption {
+  font-size: 35px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+
+table {
+  margin-top: 50px;
+  border-collapse: collapse;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #f5fefd;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: slideInFromLeft 1s ease-out;
+}
+
+.col-2,
+.col-3 {
+  font-family: 'Digital-7 Regular', monospace;
+}
+
+#next-prayer {
+  font-family: 'Faruma', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: blinker 2s linear infinite;
+  color: black;
+  text-shadow: none;
+}
+
+#next-prayer.active {
+  color: red;
+  text-shadow: none;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+const now = new Date();
+const currentHour = now.getHours();
+const currentMinute = now.getMinutes();
+
+let nextPrayer = '';
+if (currentHour < 4 || (currentHour === 4 && currentMinute < 44)) {
+  nextPrayer = 'Fajr - 04:44';
+} else if (currentHour < 12 || (currentHour === 12 && currentMinute < 5)) {
+  nextPrayer = 'Dhuhr - 12:05';
+} else if (currentHour < 15 || (currentHour === 15 && currentMinute < 18)) {
+  nextPrayer = 'Asr - 15:18';
+} else if (currentHour < 18 || (currentHour === 18 && currentMinute < 12)) {
+  nextPrayer = 'Maqrib - 18:12';
+} else if (currentHour < 19 || (currentHour === 19 && currentMinute < 18)) {
+  nextPrayer = 'Isha - 19:18';
+}
+
+const nextPrayerElement = document.getElementById('next-prayer');
+nextPrayerElement.innerHTML = `Next Prayer: ${nextPrayer}`;
+
+if (nextPrayer !== '') {
+  const prayerTime = nextPrayer.split(' ')[0];
+  const prayerTimeInHours = parseInt(prayerTime.split(':')[0]);
+
+  if (currentHour === prayerTimeInHours) {
+    nextPrayerElement.classList.add('active');
+  }
+}
+
+#date-time {
+  font-family: 'Digital-7 Regular', monospace;
+  font-size: 40px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  animation: slideInFromTop 1s ease-out;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
