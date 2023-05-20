@@ -221,3 +221,48 @@ if (nextPrayer !== '') {
     opacity: 1;
   }
 }
+
+#question-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#menu {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#password-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#popup-text {
+  margin: 0;
+}

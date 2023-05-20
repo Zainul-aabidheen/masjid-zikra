@@ -114,3 +114,32 @@ setInterval(updatePrayerTimes, 86400000); // 86400000 milliseconds = 1 day
 
 // Call the function every second to check if the next prayer time has changed
 setInterval(updateNextPrayer, 1000); // 1000 milliseconds = 1 second
+
+// Function to toggle the menu visibility
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  if (menu.style.display === 'none') {
+    menu.style.display = 'block';
+  } else {
+    menu.style.display = 'none';
+  }
+}
+
+// Function to submit the password
+function submitPassword() {
+  const passwordInput = document.getElementById('password-input');
+  const password = passwordInput.value.trim();
+
+  if (password === 'Q1W2E3') {
+    window.location.href = 'visitor.html';
+  } else {
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popup-text');
+    popupText.textContent = 'Incorrect Password';
+    popup.style.display = 'block';
+
+    setTimeout(function() {
+      popup.style.display = 'none';
+    }, 5000);
+  }
+}

@@ -54,9 +54,18 @@
           <td colspan="2" style="text-align:center;">07:30</td>
           <td>ޢީދު</td>
         </tr>
+
       </table>
       <div id="next-prayer"></div>
     </div>
+	<button id="question-button" onclick="toggleMenu()">?</button>
+	<div id="menu" style="display: none;">
+	<input type="password" id="password-input" placeholder="Enter password">
+	<button onclick="submitPassword()">Submit</button>
+	</div>
+	<div id="popup" style="display: none;">
+	<p id="popup-text"></p>
+	</div>
     <script src="script.js"></script>
   </body>
 </html>
