@@ -174,35 +174,6 @@ table {
   }
 }
 
-const now = new Date();
-const currentHour = now.getHours();
-const currentMinute = now.getMinutes();
-
-let nextPrayer = '';
-if (currentHour < 4 || (currentHour === 4 && currentMinute < 44)) {
-  nextPrayer = 'Fajr - 04:44';
-} else if (currentHour < 12 || (currentHour === 12 && currentMinute < 5)) {
-  nextPrayer = 'Dhuhr - 12:05';
-} else if (currentHour < 15 || (currentHour === 15 && currentMinute < 18)) {
-  nextPrayer = 'Asr - 15:18';
-} else if (currentHour < 18 || (currentHour === 18 && currentMinute < 12)) {
-  nextPrayer = 'Maqrib - 18:12';
-} else if (currentHour < 19 || (currentHour === 19 && currentMinute < 18)) {
-  nextPrayer = 'Isha - 19:18';
-}
-
-const nextPrayerElement = document.getElementById('next-prayer');
-nextPrayerElement.innerHTML = `Next Prayer: ${nextPrayer}`;
-
-if (nextPrayer !== '') {
-  const prayerTime = nextPrayer.split(' ')[0];
-  const prayerTimeInHours = parseInt(prayerTime.split(':')[0]);
-
-  if (currentHour === prayerTimeInHours) {
-    nextPrayerElement.classList.add('active');
-  }
-}
-
 #date-time {
   font-family: 'Digital-7 Regular', monospace;
   font-size: 40px;
