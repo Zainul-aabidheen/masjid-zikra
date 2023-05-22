@@ -132,7 +132,7 @@ function submitPassword() {
   const password = passwordInput.value.trim();
 
   if (password === 'Q1W2E3') {
-    window.location.href = 'admin-only-secet.txt';
+    window.location.href = 'admin.html';
   } else {
     const popup = document.getElementById('popup');
     const popupText = document.getElementById('popup-text');
