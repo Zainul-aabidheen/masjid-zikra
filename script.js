@@ -73,44 +73,45 @@ function updateNextPrayer() {
   }
 }
 
-// Call the function initially to update the next prayer time
-updateNextPrayer();
-
 // Function to update the prayer times
-function updatePrayerTimes() {
-  // Set the necessary parameters for the API request
-  const latitude = 37.7749; // Example latitude
-  const longitude = -122.4194; // Example longitude
-  const method = 3; // Example calculation method
+async function updatePrayerTimes() {
+  try {
+    // Set the necessary parameters for the API request
+    const country = 'Maldives';
+    const city = 'Male';
+    const url = `https://aladhan.p.rapidapi.com/timingsByCity?country=${country}&city=${city}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'ac81490a22msh19b976215933ac0p1f356djsnccfee81167a5',
+        'X-RapidAPI-Host': 'aladhan.p.rapidapi.com'
+      }
+    };
 
-  // Make the API request
-  fetch(`http://api.islamicfinder.us/prayer_times?latitude=${latitude}&longitude=${longitude}&method=${method}&month=current`)
-    .then(response => response.json())
-    .then(data => {
-      // Extract the prayer times from the response
-      const fajr = data.fajr;
-      const dhuhr = data.dhuhr;
-      const asr = data.asr;
-      const maghrib = data.maghrib;
-      const isha = data.isha;
+    // Make the API request
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-      // Update the prayer time elements in the HTML
-      document.getElementById('fajr-time').textContent = fajr;
-      document.getElementById('dhuhr-time').textContent = dhuhr;
-      document.getElementById('asr-time').textContent = asr;
-      document.getElementById('maghrib-time').textContent = maghrib;
-      document.getElementById('isha-time').textContent = isha;
-    })
-    .catch(error => {
-      console.error('Error fetching prayer times:', error);
-    });
+    // Extract the prayer times from the response
+    const fajr = data.data.timings.Fajr;
+    const dhuhr = data.data.timings.Dhuhr;
+    const asr = data.data.timings.Asr;
+    const maghrib = data.data.timings.Maghrib;
+    const isha = data.data.timings.Isha;
+
+    // Update the prayer time elements in the HTML
+    document.getElementById('fajr-time').textContent = fajr;
+    document.getElementById('dhuhr-time').textContent = dhuhr;
+    document.getElementById('asr-time').textContent = asr;
+    document.getElementById('maghrib-time').textContent = maghrib;
+    document.getElementById('isha-time').textContent = isha;
+
+    // Update the next prayer time
+    updateNextPrayer();
+  } catch (error) {
+    console.error('Error fetching prayer times:', error);
+  }
 }
-
-// Call the function initially to update the prayer times
-updatePrayerTimes();
-
-// Call the function every day to update the prayer times
-setInterval(updatePrayerTimes, 86400000); // 86400000 milliseconds = 1 day
 
 // Call the function every second to check if the next prayer time has changed
 setInterval(updateNextPrayer, 1000); // 1000 milliseconds = 1 second
@@ -131,7 +132,7 @@ function submitPassword() {
   const password = passwordInput.value.trim();
 
   if (password === 'Q1W2E3') {
-    window.location.href = 'visitor.html';
+    window.location.href = 'admin-only-secet.txt';
   } else {
     const popup = document.getElementById('popup');
     const popupText = document.getElementById('popup-text');
