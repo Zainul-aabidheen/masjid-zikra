@@ -28,13 +28,13 @@ function getNextPrayer() {
   // Get the next prayer time
   let nextPrayer = '';
   if (currentHour < 4 || (currentHour === 4 && currentMinute < 48)) {
-    nextPrayer = 'ފަތިސް - 04:48';
+    nextPrayer = 'ފަތިސް - 04:37';
   } else if (currentHour < 12 || (currentHour === 12 && currentMinute < 5)) {
-    nextPrayer = 'މެންދުރު - 12:05';
+    nextPrayer = 'މެންދުރު - 12:12';
   } else if (currentHour < 15 || (currentHour === 15 && currentMinute < 18)) {
-    nextPrayer = 'ޢަޞްރު - 15:18';
+    nextPrayer = 'ޢަޞްރު - 15:36';
   } else if (currentHour < 18 || (currentHour === 18 && currentMinute < 12)) {
-    nextPrayer = 'މަޣްރިބް - 18:12';
+    nextPrayer = 'މަޣްރިބް - 18:21';
   } else if (currentHour < 19 || (currentHour === 19 && currentMinute < 18)) {
     nextPrayer = 'ޢިޝާ - 19:18';
   } else {
